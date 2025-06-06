@@ -114,7 +114,7 @@ internal sealed partial class McpSession : IDisposable
                 LogMessageRead(EndpointName, message.GetType().Name);
 
                 // Fire and forget the message handling to avoid blocking the transport.
-                _ = ProcessMessageAsync();
+                await ProcessMessageAsync();
                 async Task ProcessMessageAsync()
                 {
                     JsonRpcMessageWithId? messageWithId = message as JsonRpcMessageWithId;

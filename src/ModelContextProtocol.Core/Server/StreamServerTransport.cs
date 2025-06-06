@@ -85,7 +85,6 @@ public class StreamServerTransport : TransportBase
     private async Task ReadMessagesAsync()
     {
         CancellationToken shutdownToken = _shutdownCts.Token;
-        Exception? error = null;
         try
         {
             LogTransportEnteringReadMessagesLoop(Name);
@@ -139,11 +138,7 @@ public class StreamServerTransport : TransportBase
         catch (Exception ex)
         {
             LogTransportReadMessagesFailed(Name, ex);
-            error = ex;
-        }
-        finally
-        {
-            SetDisconnected(error);
+            SetDisconnected(ex);
         }
     }
 
