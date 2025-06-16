@@ -155,60 +155,60 @@ public abstract partial class TransportBase : ITransport
         }
     }
 
-    [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} transport connect failed.")]
-    private protected partial void LogTransportConnectFailed(string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} transport connect failed.")]
+    private protected void LogTransportConnectFailed(string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} transport send failed for message ID '{MessageId}'.")]
-    private protected partial void LogTransportSendFailed(string endpointName, string messageId, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} transport send failed for message ID '{MessageId}'.")]
+    private protected void LogTransportSendFailed(string endpointName, string messageId, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport reading messages.")]
-    private protected partial void LogTransportEnteringReadMessagesLoop(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport reading messages.")]
+    private protected void LogTransportEnteringReadMessagesLoop(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport completed reading messages.")]
-    private protected partial void LogTransportEndOfStream(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport completed reading messages.")]
+    private protected void LogTransportEndOfStream(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} transport received message. Message: '{Message}'.")]
-    private protected partial void LogTransportReceivedMessageSensitive(string endpointName, string message);
+    // [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} transport received message. Message: '{Message}'.")]
+    private protected void LogTransportReceivedMessageSensitive(string endpointName, string message) {}
 
-    [LoggerMessage(Level = LogLevel.Debug, Message = "{EndpointName} transport received message with ID '{MessageId}'.")]
-    private protected partial void LogTransportReceivedMessage(string endpointName, string messageId);
+    // [LoggerMessage(Level = LogLevel.Debug, Message = "{EndpointName} transport received message with ID '{MessageId}'.")]
+    private protected void LogTransportReceivedMessage(string endpointName, string messageId) {}
 
-    [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} transport received unexpected message. Message: '{Message}'.")]
-    private protected partial void LogTransportMessageParseUnexpectedTypeSensitive(string endpointName, string message);
+    // [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} transport received unexpected message. Message: '{Message}'.")]
+    private protected void LogTransportMessageParseUnexpectedTypeSensitive(string endpointName, string message) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport message parsing failed.")]
-    private protected partial void LogTransportMessageParseFailed(string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport message parsing failed.")]
+    private protected void LogTransportMessageParseFailed(string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} transport message parsing failed. Message: '{Message}'.")]
-    private protected partial void LogTransportMessageParseFailedSensitive(string endpointName, string message, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} transport message parsing failed. Message: '{Message}'.")]
+    private protected void LogTransportMessageParseFailedSensitive(string endpointName, string message, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport message reading canceled.")]
-    private protected partial void LogTransportReadMessagesCancelled(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} transport message reading canceled.")]
+    private protected void LogTransportReadMessagesCancelled(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} transport message reading failed.")]
-    private protected partial void LogTransportReadMessagesFailed(string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} transport message reading failed.")]
+    private protected void LogTransportReadMessagesFailed(string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shutting down.")]
-    private protected partial void LogTransportShuttingDown(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shutting down.")]
+    private protected void LogTransportShuttingDown(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} shutdown failed.")]
-    private protected partial void LogTransportShutdownFailed(string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} shutdown failed.")]
+    private protected void LogTransportShutdownFailed(string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} shutdown failed waiting for message reading completion.")]
-    private protected partial void LogTransportCleanupReadTaskFailed(string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} shutdown failed waiting for message reading completion.")]
+    private protected void LogTransportCleanupReadTaskFailed(string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shut down.")]
-    private protected partial void LogTransportShutDown(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shut down.")]
+    private protected void LogTransportShutDown(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} received message before connected.")]
-    private protected partial void LogTransportMessageReceivedBeforeConnected(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} received message before connected.")]
+    private protected void LogTransportMessageReceivedBeforeConnected(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} endpoint event received out of order.")]
-    private protected partial void LogTransportEndpointEventInvalid(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} endpoint event received out of order.")]
+    private protected void LogTransportEndpointEventInvalid(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} failed to parse event.")]
-    private protected partial void LogTransportEndpointEventParseFailed(string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} failed to parse event.")]
+    private protected void LogTransportEndpointEventParseFailed(string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} failed to parse event. Message: '{Message}'.")]
-    private protected partial void LogTransportEndpointEventParseFailedSensitive(string endpointName, string message, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} failed to parse event. Message: '{Message}'.")]
+    private protected void LogTransportEndpointEventParseFailedSensitive(string endpointName, string message, Exception exception) {}
 }

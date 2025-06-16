@@ -104,7 +104,7 @@ public static partial class McpJsonUtilities
     [JsonSourceGenerationOptions(JsonSerializerDefaults.Web,
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         NumberHandling = JsonNumberHandling.AllowReadingFromString)]
-    
+
     // JSON-RPC
     [JsonSerializable(typeof(JsonRpcMessage))]
     [JsonSerializable(typeof(JsonRpcMessage[]))]
@@ -205,7 +205,9 @@ public static partial class McpJsonUtilities
 #endif
 
     [ExcludeFromCodeCoverage]
-    internal sealed partial class JsonContext : JsonSerializerContext;
+    internal sealed partial class JsonContext : JsonSerializerContext
+    {
+    }
 
     private static JsonElement ParseJsonElement(ReadOnlySpan<byte> utf8Json)
     {

@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using ModelContextProtocol.Protocol;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.ServerSentEvents;
 using System.Text;
@@ -247,12 +248,12 @@ internal sealed partial class SseClientSessionTransport : TransportBase
         _connectionEstablished.TrySetResult(true);
     }
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} accepted SSE transport POST for message ID '{MessageId}'.")]
-    private partial void LogAcceptedPost(string endpointName, string messageId);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} accepted SSE transport POST for message ID '{MessageId}'.")]
+    private void LogAcceptedPost(string endpointName, string messageId) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} rejected SSE transport POST for message ID '{MessageId}'.")]
-    private partial void LogRejectedPost(string endpointName, string messageId);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} rejected SSE transport POST for message ID '{MessageId}'.")]
+    private void LogRejectedPost(string endpointName, string messageId) {}
 
-    [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} rejected SSE transport POST for message ID '{MessageId}'. Server response: '{responseContent}'.")]
-    private partial void LogRejectedPostSensitive(string endpointName, string messageId, string responseContent);
+    // [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} rejected SSE transport POST for message ID '{MessageId}'. Server response: '{responseContent}'.")]
+    private void LogRejectedPostSensitive(string endpointName, string messageId, string responseContent) {}
 }

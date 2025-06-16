@@ -459,6 +459,6 @@ internal sealed partial class AIFunctionMcpServerTool : McpServerTool
         };
     }
 
-    [LoggerMessage(Level = LogLevel.Error, Message = "\"{ToolName}\" threw an unhandled exception.")]
-    private partial void ToolCallError(string toolName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Error, Message = "\"{ToolName}\" threw an unhandled exception.")]
+    private void ToolCallError(string toolName, Exception exception) {}
 }

@@ -236,27 +236,27 @@ public sealed partial class StdioClientTransport : IClientTransport
         }
     }
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} connecting.")]
-    private static partial void LogTransportConnecting(ILogger logger, string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} connecting.")]
+    private static void LogTransportConnecting(ILogger logger, string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} starting server process. Command: '{Command}'.")]
-    private static partial void LogCreateProcessForTransport(ILogger logger, string endpointName, string command);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} starting server process. Command: '{Command}'.")]
+    private static void LogCreateProcessForTransport(ILogger logger, string endpointName, string command) {}
 
-    [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} starting server process. Command: '{Command}', Arguments: {Arguments}, Environment: {Environment}, Working directory: {WorkingDirectory}.")]
-    private static partial void LogCreateProcessForTransportSensitive(ILogger logger, string endpointName, string command, string? arguments, string environment, string workingDirectory);
+    // [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} starting server process. Command: '{Command}', Arguments: {Arguments}, Environment: {Environment}, Working directory: {WorkingDirectory}.")]
+    private static void LogCreateProcessForTransportSensitive(ILogger logger, string endpointName, string command, string? arguments, string environment, string workingDirectory) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} failed to start server process.")]
-    private static partial void LogTransportProcessStartFailed(ILogger logger, string endpointName);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} failed to start server process.")]
+    private static void LogTransportProcessStartFailed(ILogger logger, string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} received stderr log: '{Data}'.")]
-    private static partial void LogReadStderr(ILogger logger, string endpointName, string data);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} received stderr log: '{Data}'.")]
+    private static void LogReadStderr(ILogger logger, string endpointName, string data) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} started server process with PID {ProcessId}.")]
-    private static partial void LogTransportProcessStarted(ILogger logger, string endpointName, int processId);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} started server process with PID {ProcessId}.")]
+    private static void LogTransportProcessStarted(ILogger logger, string endpointName, int processId) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} connect failed.")]
-    private static partial void LogTransportConnectFailed(ILogger logger, string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} connect failed.")]
+    private static void LogTransportConnectFailed(ILogger logger, string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} shutdown failed.")]
-    private static partial void LogTransportShutdownFailed(ILogger logger, string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} shutdown failed.")]
+    private static void LogTransportShutdownFailed(ILogger logger, string endpointName, Exception exception) {}
 }

@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using ModelContextProtocol.Protocol;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Channels;
 
 namespace ModelContextProtocol.Client;
@@ -126,18 +127,18 @@ internal sealed partial class AutoDetectingClientSessionTransport : ITransport
         }
     }
 
-    [LoggerMessage(Level = LogLevel.Debug, Message = "{EndpointName} attempting to connect using Streamable HTTP transport.")]
-    private partial void LogAttemptingStreamableHttp(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Debug, Message = "{EndpointName} attempting to connect using Streamable HTTP transport.")]
+    private void LogAttemptingStreamableHttp(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} streamable HTTP transport failed with status code {StatusCode}, falling back to SSE transport.")]
-    private partial void LogStreamableHttpFailed(string endpointName, HttpStatusCode statusCode);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} streamable HTTP transport failed with status code {StatusCode}, falling back to SSE transport.")]
+    private void LogStreamableHttpFailed(string endpointName, HttpStatusCode statusCode) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} using Streamable HTTP transport.")]
-    private partial void LogUsingStreamableHttp(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} using Streamable HTTP transport.")]
+    private void LogUsingStreamableHttp(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Debug, Message = "{EndpointName} attempting to connect using SSE transport.")]
-    private partial void LogAttemptingSSE(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Debug, Message = "{EndpointName} attempting to connect using SSE transport.")]
+    private void LogAttemptingSSE(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} using SSE transport.")]
-    private partial void LogUsingSSE(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} using SSE transport.")]
+    private void LogUsingSSE(string endpointName) {}
 }

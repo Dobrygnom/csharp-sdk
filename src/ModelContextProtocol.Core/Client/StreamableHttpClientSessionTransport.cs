@@ -1,3 +1,4 @@
+using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System.Net.Http.Headers;

@@ -205,15 +205,15 @@ internal sealed partial class McpClient : McpEndpoint, IMcpClient
         }
     }
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} client received server '{ServerInfo}' capabilities: '{Capabilities}'.")]
-    private partial void LogServerCapabilitiesReceived(string endpointName, string capabilities, string serverInfo);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} client received server '{ServerInfo}' capabilities: '{Capabilities}'.")]
+    private void LogServerCapabilitiesReceived(string endpointName, string capabilities, string serverInfo) {}
 
-    [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} client initialization error.")]
-    private partial void LogClientInitializationError(string endpointName, Exception exception);
+    // [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} client initialization error.")]
+    private void LogClientInitializationError(string endpointName, Exception exception) {}
 
-    [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} client initialization timed out.")]
-    private partial void LogClientInitializationTimeout(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} client initialization timed out.")]
+    private void LogClientInitializationTimeout(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} client protocol version mismatch with server. Expected '{Expected}', received '{Received}'.")]
-    private partial void LogServerProtocolVersionMismatch(string endpointName, string expected, string received);
+    // [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} client protocol version mismatch with server. Expected '{Expected}', received '{Received}'.")]
+    private void LogServerProtocolVersionMismatch(string endpointName, string expected, string received) {}
 }

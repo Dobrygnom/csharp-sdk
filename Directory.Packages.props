@@ -1,80 +1,279 @@
 <Project>
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <System9Version>9.0.5</System9Version>
-    <System10Version>10.0.0-preview.4.25258.110</System10Version>
-    <MicrosoftExtensionsAIVersion>9.5.0</MicrosoftExtensionsAIVersion>
+    <!-- <System9Version>9.0.5</System9Version> -->
+    <!-- <System10Version>10.0.0-preview.4.25258.110</System10Version> -->
+    <!-- <MicrosoftExtensionsAIVersion>9.5.0</MicrosoftExtensionsAIVersion> -->
   </PropertyGroup>
-
-  <!-- Product dependencies netstandard -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageVersion Include="Microsoft.Bcl.Memory" Version="$(System9Version)" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
-    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
-    <PackageVersion Include="System.IO.Pipelines" Version="8.0.0" />
-    <PackageVersion Include="System.Text.Json" Version="8.0.5" />
-    <PackageVersion Include="System.Threading.Channels" Version="8.0.0" />
-  </ItemGroup>
-
-  <!-- Product dependencies LTS -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.1" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
-    <PackageVersion Include="System.IO.Pipelines" Version="8.0.0" />
-  </ItemGroup>
-
-  <!-- Product dependencies .NET 9 -->
-  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="$(System9Version)" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="$(System9Version)" />
-    <PackageVersion Include="System.IO.Pipelines" Version="$(System9Version)" />
-  </ItemGroup>
-
-  <!-- Product dependencies shared -->
   <ItemGroup>
-    <PackageVersion Include="Microsoft.Extensions.AI.Abstractions" Version="$(MicrosoftExtensionsAIVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.AI" Version="$(MicrosoftExtensionsAIVersion)" />
-    <PackageVersion Include="System.Net.ServerSentEvents" Version="$(System10Version)" />
-  </ItemGroup>
-
-  <ItemGroup>
-
-    <!-- Build Infra & Packaging -->
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-
-    <!-- Testing dependencies -->
-    <PackageVersion Include="Anthropic.SDK" Version="5.4.1" />
-    <PackageVersion Include="coverlet.collector" Version="6.0.4">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageVersion>
-    <PackageVersion Include="GitHubActionsTestLogger" Version="2.4.1" />
-    <PackageVersion Include="Microsoft.Extensions.AI.OpenAI" Version="9.5.0-preview.1.25265.7" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(System9Version)" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="$(System9Version)" />
-    <PackageVersion Include="Microsoft.Extensions.Logging" Version="$(System9Version)" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$(System9Version)" />
-    <PackageVersion Include="Microsoft.Extensions.Options" Version="$(System9Version)" />
-    <PackageVersion Include="Microsoft.Extensions.TimeProvider.Testing" Version="9.5.0" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
-    <PackageVersion Include="Moq" Version="4.20.72" />
-    <PackageVersion Include="OpenTelemetry" Version="1.12.0" />
-    <PackageVersion Include="OpenTelemetry.Exporter.InMemory" Version="1.12.0" />
-    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.12.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.Http " Version="1.12.0" />
-    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0"  />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0"  />
-    <PackageVersion Include="Serilog.Extensions.Hosting" Version="9.0.0" />
-    <PackageVersion Include="Serilog.Extensions.Logging" Version="9.0.1" />
-    <PackageVersion Include="Serilog.Sinks.Console" Version="6.0.0" />
-    <PackageVersion Include="Serilog.Sinks.Debug" Version="3.0.0" />
-    <PackageVersion Include="Serilog.Sinks.File" Version="7.0.0" />
-    <PackageVersion Include="Serilog" Version="4.3.0" />
-    <PackageVersion Include="System.Linq.AsyncEnumerable" Version="$(System10Version)" />
-    <PackageVersion Include="xunit.v3" Version="2.0.2" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.0" />
+    <!-- Core Packages -->
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="protobuf-net" Version="3.0.101" />
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.376" />
+    <PackageVersion Include="Humanizer" Version="2.13.14" />
+    <PackageVersion Include="NodaTime" Version="3.1.9" />
+    <PackageVersion Include="AutoItX.Dotnet" Version="3.3.14.5" />
+    <PackageVersion Include="Infor.BI.Common.Analyzers" Version="1.1.6" />
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
-    <PackageVersion Include="JsonSchema.Net" Version="7.3.4" />
+    <PackageVersion Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" />
+    <PackageVersion Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0.1" />
+    <PackageVersion Include="Polly" Version="7.2.3" />
+    <PackageVersion Include="RestEase.Signed" Version="1.4.7" />
+    <PackageVersion Include="System.Threading.Tasks.Dataflow" Version="6.0.0" />
+    <PackageVersion Include="MediatR" Version="9.0.0" />
+    <PackageVersion Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="MessagePack" Version="2.5.192" />
+    <PackageVersion Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
+    <PackageVersion Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Memory" Version="2.1.23" />
+
+    <!-- Amazon SDK -->
+    <PackageVersion Include="AWSSDK.Core" Version="3.7.6" />
+    <PackageVersion Include="AWSSDK.S3" Version="3.7.7.14" />
+    <PackageVersion Include="AWSSDK.EC2" Version="3.7.56" />
+    <PackageVersion Include="AWSSDK.KeyManagementService" Version="3.7.2.62" />
+    <PackageVersion Include="AWSSDK.SecurityToken" Version="3.7.1.108" />
+
+    <!-- Azure -->
+    <PackageVersion Include="Azure.Core" Version="1.42.0" />
+    <PackageVersion Include="Azure.Storage.Blobs" Version="12.21.2" />
+    <PackageVersion Include="Azure.Identity" Version="1.12.0" />
+
+    <!-- AspNetCore -->
+    <PackageVersion Include="Microsoft.AspNetCore.Http" Version="2.1.34" />
+    <PackageVersion Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication" Version="2.1.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="2.1.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.Server.HttpSys" Version="2.1.12" />
+    <PackageVersion Include="Microsoft.AspNetCore.Localization" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.38" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.1.18" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.DataAnnotations" Version="2.1.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.1.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.1.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.1.11" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.ObjectPool" Version="2.1.6" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="2.1.10" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Antiforgery" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.ResponseCompression" Version="2.1.21" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.WsFederation" Version="2.1.2" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.1.34" />
+    <PackageVersion Include="Microsoft.AspNetCore" Version="2.1.7" />
+    <PackageVersion Include="Microsoft.AspNetCore.CookiePolicy" Version="2.1.14" />
+    <PackageVersion Include="Microsoft.AspNetCore.HttpsPolicy" Version="2.1.1"/>
+    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Server.Kestrel.Https" Version="2.1.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Server.Kestrel.Core " Version="2.1.25" />
+    <PackageVersion Include="Microsoft.AspNetCore.ResponseCaching" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.HttpOverrides" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.WebUtilities" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.Routing" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Net.Http.Headers" Version="2.1.14" />
+    <PackageVersion Include="Microsoft.IdentityModel.Protocols.WsFederation" Version="8.0.2" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.0.2" />
+    <PackageVersion Include="MessagePack.AspNetCoreMvcFormatter" Version="2.2.113" />
+
+    <!-- Swashbuckle -->
+    <PackageVersion Include="Microsoft.OpenApi.Readers" Version="1.6.14" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.14" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.7.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="6.7.1" />
+
+    <!-- AspNet (Legacy)-->
+    <PackageVersion Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+
+    <!-- Unit Testing -->
+    <PackageVersion Include="Moq" Version="4.16.1" />
+    <PackageVersion Include="NUnit" Version="3.13.3" />
+    <PackageVersion Include="NUnit.ConsoleRunner" Version="3.15.2" />
+    <PackageVersion Include="NUnit.Extension.NUnitProjectLoader" Version="3.7.1" />
+    <PackageVersion Include="NUnit.Extension.NUnitV2Driver" Version="3.9.0" />
+    <PackageVersion Include="NUnit.Extension.NUnitV2ResultWriter" Version="3.7.0" />
+    <PackageVersion Include="NUnit.Extension.TeamCityEventListener" Version="1.0.7" />
+    <PackageVersion Include="NUnit.Extension.VSProjectLoader" Version="3.9.0" />
+    <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageVersion Include="NUnit.Runners" Version="3.12.0" />
+    <PackageVersion Include="Shouldly" Version="4.0.3" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageVersion Include="MSTest.TestAdapter" Version="2.2.8" />
+    <PackageVersion Include="MSTest.TestFramework" Version="2.2.8" />
+    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+
+    <!-- Selenium Web Drivers
+        The Selenium strong named assemblies that we require are not available on nuget.
+        They need to be manually download from http://selenium-release.storage.googleapis.com/index.html
+        and put into our internal nuget repository.
+       -->
+    <PackageVersion Include="Selenium.Support.StrongNamed" Version="4.0.0-alpha05" />
+    <PackageVersion Include="Selenium.WebDriver.StrongNamed" Version="4.0.0-alpha05" />
+    <PackageVersion Include="Selenium.WebDriver.ChromeDriver" Version="121.0.6167.18400" />
+    <PackageVersion Include="Selenium.WebDriver.IEDriver" Version="4.0.0" />
+
+    <!-- Microstft API for code analysis and Roslyn C# compiler-->
+    <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.2" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="3.11.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="3.11.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.11.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="3.11.0" />
+    <PackageVersion Include="Microsoft.Composition" Version="1.0.31" />
+
+    <!-- Build Project System API-->
+    <PackageVersion Include="Microsoft.Build" Version="16.11.0" />
+    <PackageVersion Include="Microsoft.Build.Utilities.Core" Version="16.11.0" />
+    <PackageVersion Include="Microsoft.VSSDK.BuildTools" Version="16.11.35" />
+
+    <!-- Relational Database Drivers -->
+    <PackageVersion Include="Oracle.ManagedDataAccess" Version="21.12.0" />
+    <PackageVersion Include="Npgsql" Version="4.1.14" />
+    <PackageVersion Include="Dapper.StrongName" Version="2.0.123" />
+
+    <!-- EntityFramework -->
+    <PackageVersion Include="EntityFramework" Version="6.4.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="2.1.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="2.1.14" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.14" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.1.2" />
+    <PackageVersion Include="LinqKit.Microsoft.EntityFrameworkCore" Version="2.0.27" />
+
+    <!-- Certificate and OAuth-->
+    <PackageVersion Include="Thinktecture.IdentityModel.Client" Version="4.0.1" />
+    <PackageVersion Include="Portable.BouncyCastle" Version="1.9.0" />
+    <PackageVersion Include="Infor.Thinktecture.IdentityModel.Client" Version="4.0.1" />
+
+    <!-- System Packages-->
+    <PackageVersion Include="Microsoft.Bcl.AsyncInterfaces" Version="8.0.0" />
+    <PackageVersion Include="System.Interactive.Async" Version="3.1.1" />
+    <PackageVersion Include="System.Collections" Version="4.3.0" />
+    <PackageVersion Include="System.Collections.Immutable" Version="8.0.0" />
+    <PackageVersion Include="System.Diagnostics.Debug" Version="4.3.0" />
+    <PackageVersion Include="System.Globalization" Version="4.3.0" />
+    <PackageVersion Include="System.IO" Version="4.3.0" />
+    <PackageVersion Include="System.Linq" Version="4.3.0" />
+    <PackageVersion Include="System.Reflection" Version="4.3.0" />
+    <PackageVersion Include="System.Reflection.Extensions" Version="4.3.0" />
+    <PackageVersion Include="System.Reflection.Metadata" Version="8.0.0" />
+    <PackageVersion Include="System.Reflection.Primitives" Version="4.3.0" />
+    <PackageVersion Include="System.Resources.ResourceManager" Version="4.3.0" />
+    <PackageVersion Include="System.Memory" Version="4.5.5" />
+    <PackageVersion Include="System.Runtime" Version="4.3.1" />
+    <PackageVersion Include="System.Runtime.Extensions" Version="4.3.1" />
+    <PackageVersion Include="System.Runtime.InteropServices" Version="4.3.0" />
+    <PackageVersion Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageVersion Include="System.Text.Encoding" Version="4.3.0" />
+    <PackageVersion Include="System.Text.Encodings.Web" Version="8.0.0" />
+    <PackageVersion Include="System.Text.Encoding.Extensions" Version="4.3.0" />
+    <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <PackageVersion Include="System.Threading" Version="4.3.0" />
+    <PackageVersion Include="System.Management.Automation_PowerShell_3.0" Version="6.3.9600.17400" />
+    <PackageVersion Include="Microsoft.Net.Http" Version="2.2.29" />
+    <PackageVersion Include="Microsoft.NetMap" Version="1.0.1.47" />
+    <PackageVersion Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+    <PackageVersion Include="System.Threading.Channels" Version="4.7.1" />
+    <PackageVersion Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageVersion Include="System.Buffers" Version="4.5.1" />
+    <PackageVersion Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageVersion Include="System.ValueTuple" Version="4.5.0" />
+    <PackageVersion Include="System.Numerics.Vectors" Version="4.5.0" />
+    <PackageVersion Include="System.Data.SqlClient" Version="4.9.0" />
+    <PackageVersion Include="System.CodeDom" Version="6.0.0" />
+    <PackageVersion Include="System.Security.Principal.Windows" Version="5.0.0" />
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="4.7.1" />
+    <PackageVersion Include="System.Security.AccessControl" Version="6.0.1" />
+    <!-- log -->
+    <PackageVersion Include="Serilog" Version="2.10.0" />
+    <PackageVersion Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+    <PackageVersion Include="Serilog.Settings.Configuration" Version="3.3.0" />
+    <PackageVersion Include="Serilog.Sinks.Console" Version="4.0.1" />
+    <PackageVersion Include="Serilog.Sinks.File" Version="5.0.0" />
+
+    <!-- Farm Monitoring packages -->
+    <PackageVersion Include="prometheus-net" Version="4.2.0" />
+
+    <!-- UI -->
+    <PackageVersion Include="MahApps.Metro" Version="2.4.9" />
+    <PackageVersion Include="AvalonEdit" Version="6.1.2.30" />
+    <PackageVersion Include="Extended.Wpf.Toolkit" Version="4.2.0" />
+    <PackageVersion Include="jacobslusser.ScintillaNET.Signed" Version="3.6.3" />
+    <PackageVersion Include="DockPanelSuite" Version="3.1.0" />
+    <PackageVersion Include="DockPanelSuite.ThemeVS2005" Version="3.1.0" />
+    <PackageVersion Include="MahApps.Metro.Resources" Version="0.6.1.0" />
+
+    <!-- Syncfusion (excel export), if version is changed a new license key must be used in code !!! -->
+    <PackageVersion Include="Syncfusion.Licensing" Version="27.1.53" />
+    <PackageVersion Include="Syncfusion.Compression.Base" Version="27.1.53" />
+    <PackageVersion Include="Syncfusion.XlsIO.WinForms" Version="27.1.53" />
+
+    <!-- Antlr - Tool for Language Recognition -->
+    <!-- Keep antlr3 version matching version used in NHibernate ! -->
+    <PackageVersion Include="Antlr3.Runtime" Version="3.5.1" />
+    <PackageVersion Include="StringTemplate3" Version="3.5.1" />
+    <!-- But we need our own version of antrl3.codegenerator for app engine compiler (its only used for compilation, no output dll -->
+    <PackageVersion Include="Antlr3.CodeGenerator" Version="3.5.2-dev" />
+
+    <!-- Antlr4 - Tool for Language Recognition (used in expression editor) -->
+    <PackageVersion Include="Antlr4BuildTasks" Version="10.4.0" />
+    <PackageVersion Include="Antlr4.Runtime.Standard" Version="4.11.1" />
+
+    <!-- Uncategorized -->
+    <PackageVersion Include="SharpZipLib" Version="1.3.3" />
+    <PackageVersion Include="Svg" Version="3.3.0" />
+    <PackageVersion Include="Magick.NET-Q16-x64" Version="13.9.1" />
+    <PackageVersion Include="TestStack.White" Version="0.13.3" />
+    <PackageVersion Include="DocumentFormat.OpenXml" Version="2.15.0" />
+    <PackageVersion Include="NHibernate" Version="5.5.2" />
+    <PackageVersion Include="RestSharpSigned" Version="105.2.3" />
+    <PackageVersion Include="routedebugger" Version="2.1.5" />
+    <PackageVersion Include="WebGrease" Version="1.6.0" />
+    <PackageVersion Include="Castle.Core" Version="4.4.1" />
+    <PackageVersion Include="LinqKit" Version="1.1.27" />
+    <PackageVersion Include="Microsoft.VisualStudio.Threading" Version="17.11.20" />
+    <PackageVersion Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.11.20" />
+    <PackageVersion Include="Microsoft.SqlServer.DacFx" Version="150.5282.3" />
+    <PackageVersion Include="Microsoft.SqlServer.SqlManagementObjects" Version="160.2004021.0" />
+    <PackageVersion Include="ExcelDataReader" Version="3.6.0" />
+    <PackageVersion Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageVersion Include="MailKit" Version="2.15.0" />
+    <PackageVersion Include="AutoMapper" Version="10.1.1" />
+    <PackageVersion Include="MathNet.Numerics.Signed" Version="4.15.0" />
+    <PackageVersion Include="PDFsharp-MigraDoc-GDI" Version="1.50.5147" />
+    <PackageVersion Include="Aspose.Cells" Version="21.12.0" />
+    <PackageVersion Include="FastMember" Version="1.5.0" />
+    <PackageVersion Include="AspectInjector" Version="2.8.2" />
+
+    <PackageVersion Include="Microsoft.Web.WebView2" Version="1.0.1343.22"/>
+    <PackageVersion Include="Microsoft.Windows.CsWin32" Version="0.2.162-beta"/>
+    <PackageVersion Include="CsvHelper" Version="33.0.0" />
+
+    <!-- Infor Packages -->
+    <PackageVersion Include="Infor.NAnt" Version="0.92.0" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.Bcl.Memory" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
+    <PackageVersion Include="System.IO.Pipelines" Version="4.7.5" />
+    <PackageVersion Include="System.Text.Json" Version="8.0.5" />
+    <PackageVersion Include="System.Net.ServerSentEvents" Version="10.0.0-preview.5.25277.114" />
+    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="6.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.AI.Abstractions" Version="9.6.0" />
+    <PackageVersion Include="Microsoft.Extensions.AI" Version="9.6.0" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
+  </ItemGroup>
+
 </Project>
