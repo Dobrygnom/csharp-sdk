@@ -267,7 +267,7 @@
     <PackageVersion Include="Microsoft.Bcl.Memory" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.1.1" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
-    <PackageVersion Include="System.IO.Pipelines" Version="4.7.5" />
+    <PackageVersion Include="System.IO.Pipelines" Version="8.0.0" />
     <PackageVersion Include="System.Text.Json" Version="8.0.5" />
     <PackageVersion Include="System.Net.ServerSentEvents" Version="10.0.0-preview.5.25277.114" />
     <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="6.0.1" />

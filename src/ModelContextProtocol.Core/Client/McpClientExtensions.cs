@@ -1090,12 +1090,12 @@ public static class McpClientExtensions
     /// <remarks>
     /// <para>
     /// After this request is processed, the server will send log messages at or above the specified
-    /// logging level as notifications to the client. For example, if <see cref="LogLevel.Warning"/> is set,
-    /// the client will receive <see cref="LogLevel.Warning"/>, <see cref="LogLevel.Error"/>, 
-    /// and <see cref="LogLevel.Critical"/> level messages.
+    /// logging level as notifications to the client. For example, if  is set,
+    /// the client will receive , , 
+    /// and  level messages.
     /// </para>
     /// <para>
-    /// To receive all log messages, set the level to <see cref="LogLevel.Trace"/>.
+    /// To receive all log messages, set the level to .
     /// </para>
     /// <para>
     /// Log messages are delivered as notifications to the client and can be captured by registering

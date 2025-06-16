@@ -560,7 +560,7 @@ internal sealed class McpServer : McpEndpoint, IMcpServer
         _endpointName = $"{_serverOnlyEndpointName}, Client ({ClientInfo.Name} {ClientInfo.Version})";
     }
 
-    /// <summary>Maps a <see cref="LogLevel"/> to a <see cref="LoggingLevel"/>.</summary>
+    /// <summary>Maps a to a <see cref="LoggingLevel"/>.</summary>
     internal static LoggingLevel ToLoggingLevel(LogLevel level) =>
         level switch
         {
