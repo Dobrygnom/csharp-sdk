@@ -1,4 +1,3 @@
-using ModelContextProtocol.Client;
 using ModelContextProtocol.Server;
 using System.Threading.Channels;
 
@@ -18,9 +17,9 @@ namespace ModelContextProtocol.Protocol;
 /// messages over various channels like standard input/output streams and HTTP (Server-Sent Events).
 /// </para>
 /// <para>
-/// While <see cref="IClientTransport"/> is responsible for establishing a client's connection,
+/// While is responsible for establishing a client's connection,
 /// <see cref="ITransport"/> represents an established session. Client implementations typically obtain an
-/// <see cref="ITransport"/> instance by calling <see cref="IClientTransport.ConnectAsync"/>.
+/// <see cref="ITransport"/> instance by calling
 /// </para>
 /// </remarks>
 public interface ITransport : IAsyncDisposable
@@ -55,7 +54,7 @@ public interface ITransport : IAsyncDisposable
     /// <para>
     /// This is a core method used by higher-level abstractions in the MCP protocol implementation.
     /// Most client code should use the higher-level methods provided by <see cref="IMcpEndpoint"/>,
-    /// <see cref="McpEndpointExtensions"/>, <see cref="McpClientExtensions"/>, or <see cref="McpServerExtensions"/>,
+    /// <see cref="McpEndpointExtensions"/>, , or <see cref="McpServerExtensions"/>,
     /// rather than accessing this method directly.
     /// </para>
     /// </remarks>

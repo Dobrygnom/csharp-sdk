@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using ModelContextProtocol.Client;
 using ModelContextProtocol.Protocol;
 using ModelContextProtocol.Server;
 using System.Collections.Concurrent;
@@ -81,10 +80,6 @@ internal sealed partial class McpSession : IDisposable
 
         _transportKind = transport switch
         {
-            StdioClientSessionTransport or StdioServerTransport => "stdio",
-            StreamClientSessionTransport or StreamServerTransport => "stream",
-            SseClientSessionTransport or SseResponseStreamTransport => "sse",
-            StreamableHttpClientSessionTransport or StreamableHttpServerTransport or StreamableHttpPostTransport => "http",
             _ => "unknownTransport"
         };
 

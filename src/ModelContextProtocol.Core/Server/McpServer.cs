@@ -517,7 +517,7 @@ internal sealed class McpServer : McpEndpoint, IMcpServer
             TParams? args,
             CancellationToken cancellationToken)
         {
-            var scope = Services?.GetService<IServiceScopeFactory>()?.CreateAsyncScope();
+            var scope = Services?.GetService<IServiceScopeFactory>()?.CreateScope();
             try
             {
                 return await handler(
@@ -532,7 +532,7 @@ internal sealed class McpServer : McpEndpoint, IMcpServer
             {
                 if (scope is not null)
                 {
-                    await scope.Value.DisposeAsync().ConfigureAwait(false);
+                    scope.Dispose();
                 }
             }
         }

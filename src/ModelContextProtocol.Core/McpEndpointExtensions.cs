@@ -1,4 +1,3 @@
-using ModelContextProtocol.Client;
 using ModelContextProtocol.Protocol;
 using ModelContextProtocol.Server;
 using System.Text.Json;
@@ -16,7 +15,7 @@ namespace ModelContextProtocol;
 /// simplifying JSON-RPC communication by handling serialization and deserialization of parameters and results.
 /// </para>
 /// <para>
-/// These extension methods are designed to be used with both client (<see cref="IMcpClient"/>) and
+/// These extension methods are designed to be used with both client () and
 /// server (<see cref="IMcpServer"/>) implementations of the <see cref="IMcpEndpoint"/> interface.
 /// </para>
 /// </remarks>

@@ -52,13 +52,13 @@ namespace ModelContextProtocol.Server;
 ///     <description>
 ///       When the <see cref="McpServerResource"/> is constructed, it may be passed an <see cref="IServiceProvider"/> via 
 ///       <see cref="McpServerResourceCreateOptions.Services"/>. Any parameter that can be satisfied by that <see cref="IServiceProvider"/>
-///       according to <see cref="IServiceProviderIsService"/> will be resolved from the <see cref="IServiceProvider"/> provided to the 
+///       according to  will be resolved from the <see cref="IServiceProvider"/> provided to the 
 ///       resource invocation rather than from the argument collection.
 ///     </description>
 ///   </item>
 ///   <item>
 ///     <description>
-///       Any parameter attributed with <see cref="FromKeyedServicesAttribute"/> will similarly be resolved from the 
+///       Any parameter attributed with  will similarly be resolved from the 
 ///       <see cref="IServiceProvider"/> provided to the resource invocation rather than from the argument collection.
 ///     </description>
 ///   </item>

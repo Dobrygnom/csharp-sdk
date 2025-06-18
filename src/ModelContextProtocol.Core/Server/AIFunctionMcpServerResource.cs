@@ -119,31 +119,31 @@ internal sealed class AIFunctionMcpServerResource : McpServerResource
                     };
                 }
 
-                if (options?.Services is { } services &&
-                    services.GetService<IServiceProviderIsService>() is { } ispis &&
-                    ispis.IsService(pi.ParameterType))
-                {
-                    return new()
-                    {
-                        ExcludeFromSchema = true,
-                        BindParameter = (pi, args) =>
-                            GetRequestContext(args)?.Services?.GetService(pi.ParameterType) ??
-                            (pi.HasDefaultValue ? null :
-                             throw new ArgumentException("No service of the requested type was found.")),
-                    };
-                }
-
-                if (pi.GetCustomAttribute<FromKeyedServicesAttribute>() is { } keyedAttr)
-                {
-                    return new()
-                    {
-                        ExcludeFromSchema = true,
-                        BindParameter = (pi, args) =>
-                            (GetRequestContext(args)?.Services as IKeyedServiceProvider)?.GetKeyedService(pi.ParameterType, keyedAttr.Key) ??
-                            (pi.HasDefaultValue ? null :
-                             throw new ArgumentException("No service of the requested type was found.")),
-                    };
-                }
+                // if (options?.Services is { } services &&
+                //     services.GetService<IServiceProviderIsService>() is { } ispis &&
+                //     ispis.IsService(pi.ParameterType))
+                // {
+                //     return new()
+                //     {
+                //         ExcludeFromSchema = true,
+                //         BindParameter = (pi, args) =>
+                //             GetRequestContext(args)?.Services?.GetService(pi.ParameterType) ??
+                //             (pi.HasDefaultValue ? null :
+                //              throw new ArgumentException("No service of the requested type was found.")),
+                //     };
+                // }
+                //
+                // if (pi.GetCustomAttribute<FromKeyedServicesAttribute>() is { } keyedAttr)
+                // {
+                //     return new()
+                //     {
+                //         ExcludeFromSchema = true,
+                //         BindParameter = (pi, args) =>
+                //             (GetRequestContext(args)?.Services as IKeyedServiceProvider)?.GetKeyedService(pi.ParameterType, keyedAttr.Key) ??
+                //             (pi.HasDefaultValue ? null :
+                //              throw new ArgumentException("No service of the requested type was found.")),
+                //     };
+                // }
 
                 // These parameters are the ones and only ones to include in the schema. The schema
                 // won't be consumed by anyone other than this instance, which will use it to determine

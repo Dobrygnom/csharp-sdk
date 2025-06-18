@@ -112,31 +112,31 @@ internal sealed class AIFunctionMcpServerPrompt : McpServerPrompt
                     };
                 }
 
-                if (options?.Services is { } services &&
-                    services.GetService<IServiceProviderIsService>() is { } ispis &&
-                    ispis.IsService(pi.ParameterType))
-                {
-                    return new()
-                    {
-                        ExcludeFromSchema = true,
-                        BindParameter = (pi, args) =>
-                            GetRequestContext(args)?.Services?.GetService(pi.ParameterType) ??
-                            (pi.HasDefaultValue ? null :
-                             throw new ArgumentException("No service of the requested type was found.")),
-                    };
-                }
-
-                if (pi.GetCustomAttribute<FromKeyedServicesAttribute>() is { } keyedAttr)
-                {
-                    return new()
-                    {
-                        ExcludeFromSchema = true,
-                        BindParameter = (pi, args) =>
-                            (GetRequestContext(args)?.Services as IKeyedServiceProvider)?.GetKeyedService(pi.ParameterType, keyedAttr.Key) ??
-                            (pi.HasDefaultValue ? null :
-                             throw new ArgumentException("No service of the requested type was found.")),
-                    };
-                }
+                // if (options?.Services is { } services &&
+                //     services.GetService<IServiceProviderIsService>() is { } ispis &&
+                //     ispis.IsService(pi.ParameterType))
+                // {
+                //     return new()
+                //     {
+                //         ExcludeFromSchema = true,
+                //         BindParameter = (pi, args) =>
+                //             GetRequestContext(args)?.Services?.GetService(pi.ParameterType) ??
+                //             (pi.HasDefaultValue ? null :
+                //              throw new ArgumentException("No service of the requested type was found.")),
+                //     };
+                // }
+                //
+                // if (pi.GetCustomAttribute<FromKeyedServicesAttribute>() is { } keyedAttr)
+                // {
+                //     return new()
+                //     {
+                //         ExcludeFromSchema = true,
+                //         BindParameter = (pi, args) =>
+                //             (GetRequestContext(args)?.Services as IKeyedServiceProvider)?.GetKeyedService(pi.ParameterType, keyedAttr.Key) ??
+                //             (pi.HasDefaultValue ? null :
+                //              throw new ArgumentException("No service of the requested type was found.")),
+                //     };
+                // }
 
                 return default;
 

@@ -25,6 +25,10 @@ namespace ModelContextProtocol.Server;
 /// </param>
 public sealed class SseResponseStreamTransport(Stream sseResponseStream, string? messageEndpoint = "/message") : ITransport
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    public Stream SseResponseStream { get; } = sseResponseStream;
     private readonly SseWriter _sseWriter = new(messageEndpoint);
     private readonly Channel<JsonRpcMessage> _incomingChannel = Channel.CreateBounded<JsonRpcMessage>(new BoundedChannelOptions(1)
     {
@@ -43,7 +47,7 @@ public sealed class SseResponseStreamTransport(Stream sseResponseStream, string?
     public async Task RunAsync(CancellationToken cancellationToken)
     {
         _isConnected = true;
-        await _sseWriter.WriteAllAsync(sseResponseStream, cancellationToken).ConfigureAwait(false);
+        throw new NotImplementedException();
     }
 
     /// <inheritdoc/>
@@ -60,7 +64,7 @@ public sealed class SseResponseStreamTransport(Stream sseResponseStream, string?
     /// <inheritdoc/>
     public async Task SendMessageAsync(JsonRpcMessage message, CancellationToken cancellationToken = default)
     {
-        await _sseWriter.SendMessageAsync(message, cancellationToken).ConfigureAwait(false);
+        throw new NotImplementedException();
     }
 
     /// <summary>

@@ -1,4 +1,3 @@
-using ModelContextProtocol.Client;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
@@ -16,7 +15,7 @@ namespace ModelContextProtocol.Protocol;
 ///   <item><description>For prompt references, set <see cref="Type"/> to "ref/prompt" and provide the <see cref="Name"/> property.</description></item>
 /// </list>
 /// <para>
-/// References are commonly used with <see cref="McpClientExtensions.CompleteAsync"/> to request completion suggestions for arguments,
+/// References are commonly used with  to request completion suggestions for arguments,
 /// and with other methods that need to reference resources or prompts.
 /// </para>
 /// <para>

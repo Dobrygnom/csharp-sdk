@@ -1,6 +1,5 @@
 using Microsoft.Extensions.AI;
 using Microsoft.Extensions.DependencyInjection;
-using ModelContextProtocol.Client;
 using ModelContextProtocol.Protocol;
 using System.Reflection;
 using System.Text.Json;
@@ -13,7 +12,7 @@ namespace ModelContextProtocol.Server;
 /// <remarks>
 /// <para>
 /// <see cref="McpServerTool"/> is an abstract base class that represents an MCP tool for use in the server (as opposed
-/// to <see cref="Tool"/>, which provides the protocol representation of a tool, and <see cref="McpClientTool"/>, which
+/// to <see cref="Tool"/>, which provides the protocol representation of a tool, and , which
 /// provides a client-side representation of a tool). Instances of <see cref="McpServerTool"/> can be added into a
 /// <see cref="IServiceCollection"/> to be picked up automatically when <see cref="McpServerFactory"/> is used to create
 /// an <see cref="IMcpServer"/>, or added into a <see cref="McpServerPrimitiveCollection{McpServerTool}"/>.
@@ -65,13 +64,13 @@ namespace ModelContextProtocol.Server;
 ///     <description>
 ///       When the <see cref="McpServerTool"/> is constructed, it may be passed an <see cref="IServiceProvider"/> via 
 ///       <see cref="McpServerToolCreateOptions.Services"/>. Any parameter that can be satisfied by that <see cref="IServiceProvider"/>
-///       according to <see cref="IServiceProviderIsService"/> will not be included in the generated JSON schema and will be resolved 
+///       according to  will not be included in the generated JSON schema and will be resolved 
 ///       from the <see cref="IServiceProvider"/> provided to <see cref="InvokeAsync"/> rather than from the argument collection.
 ///     </description>
 ///   </item>
 ///   <item>
 ///     <description>
-///       Any parameter attributed with <see cref="FromKeyedServicesAttribute"/> will similarly be resolved from the 
+///       Any parameter attributed with  will similarly be resolved from the 
 ///       <see cref="IServiceProvider"/> provided to <see cref="InvokeAsync"/> rather than from the argument
 ///       collection, and will not be included in the generated JSON schema.
 ///     </description>
