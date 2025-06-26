@@ -41,7 +41,11 @@ internal static class Diagnostics
     internal static ActivityContext ExtractActivityContext(this DistributedContextPropagator propagator, JsonRpcMessage message)
     {
         propagator.ExtractTraceIdAndState(message, ExtractContext, out var traceparent, out var tracestate);
+#if !NET48
         ActivityContext.TryParse(traceparent, tracestate, true, out var activityContext);
+#else //!NET48
+        ActivityContext.TryParse(traceparent, tracestate, out var activityContext);
+#endif //!NET48
         return activityContext;
     }
 

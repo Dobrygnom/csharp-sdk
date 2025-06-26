@@ -1,4 +1,5 @@
-﻿using ModelContextProtocol.Protocol;
+﻿#if !NET48
+using ModelContextProtocol.Protocol;
 using System.IO.Pipelines;
 using System.Net.ServerSentEvents;
 using System.Runtime.CompilerServices;
@@ -91,3 +92,4 @@ internal sealed class StreamableHttpPostTransport(StreamableHttpServerTransport 
         await parentTransport.MessageWriter.WriteAsync(message, cancellationToken).ConfigureAwait(false);
     }
 }
+#endif //!NET48

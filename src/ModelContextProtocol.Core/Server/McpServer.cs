@@ -74,7 +74,9 @@ internal sealed class McpServer : McpEndpoint, IMcpServer
         }
 
         // Now that everything has been configured, subscribe to any necessary notifications.
+#if !NET48
         if (transport is not StreamableHttpServerTransport streamableHttpTransport || streamableHttpTransport.Stateless is false)
+#endif //!NET48
         {
             Register(ServerOptions.Capabilities?.Tools?.ToolCollection, NotificationMethods.ToolListChangedNotification);
             Register(ServerOptions.Capabilities?.Prompts?.PromptCollection, NotificationMethods.PromptListChangedNotification);
@@ -517,7 +519,11 @@ internal sealed class McpServer : McpEndpoint, IMcpServer
             TParams? args,
             CancellationToken cancellationToken)
         {
+#if !NET48
             var scope = Services?.GetService<IServiceScopeFactory>()?.CreateAsyncScope();
+#else //!NET48
+            var scope = Services?.GetService<IServiceScopeFactory>()?.CreateScope();
+#endif //!NET48
             try
             {
                 return await handler(
@@ -532,7 +538,11 @@ internal sealed class McpServer : McpEndpoint, IMcpServer
             {
                 if (scope is not null)
                 {
+#if !NET48
                     await scope.Value.DisposeAsync().ConfigureAwait(false);
+#else //!NET48
+                    scope.Dispose();
+#endif //!NET48
                 }
             }
         }

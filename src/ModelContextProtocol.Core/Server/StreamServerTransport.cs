@@ -74,6 +74,7 @@ public class StreamServerTransport : TransportBase
             await JsonSerializer.SerializeAsync(_outputStream, message, McpJsonUtilities.DefaultOptions.GetTypeInfo(typeof(JsonRpcMessage)), cancellationToken).ConfigureAwait(false);
             await _outputStream.WriteAsync(s_newlineBytes, cancellationToken).ConfigureAwait(false);
             await _outputStream.FlushAsync(cancellationToken).ConfigureAwait(false);
+            SetDisconnected();
         }
         catch (Exception ex)
         {
@@ -85,7 +86,6 @@ public class StreamServerTransport : TransportBase
     private async Task ReadMessagesAsync()
     {
         CancellationToken shutdownToken = _shutdownCts.Token;
-        Exception? error = null;
         try
         {
             LogTransportEnteringReadMessagesLoop(Name);
@@ -139,11 +139,7 @@ public class StreamServerTransport : TransportBase
         catch (Exception ex)
         {
             LogTransportReadMessagesFailed(Name, ex);
-            error = ex;
-        }
-        finally
-        {
-            SetDisconnected(error);
+            SetDisconnected(ex);
         }
     }
 

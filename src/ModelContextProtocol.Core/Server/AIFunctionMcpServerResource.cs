@@ -118,7 +118,7 @@ internal sealed class AIFunctionMcpServerResource : McpServerResource
                         },
                     };
                 }
-
+#if !NET48
                 if (options?.Services is { } services &&
                     services.GetService<IServiceProviderIsService>() is { } ispis &&
                     ispis.IsService(pi.ParameterType))
@@ -144,7 +144,7 @@ internal sealed class AIFunctionMcpServerResource : McpServerResource
                              throw new ArgumentException("No service of the requested type was found.")),
                     };
                 }
-
+#endif //!NET48
                 // These parameters are the ones and only ones to include in the schema. The schema
                 // won't be consumed by anyone other than this instance, which will use it to determine
                 // which properties should show up in the URI template.

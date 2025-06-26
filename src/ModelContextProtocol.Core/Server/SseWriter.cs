@@ -1,4 +1,5 @@
-﻿using ModelContextProtocol.Protocol;
+﻿#if !NET48
+using ModelContextProtocol.Protocol;
 using System.Buffers;
 using System.Net.ServerSentEvents;
 using System.Text;
@@ -116,3 +117,4 @@ internal sealed class SseWriter(string? messageEndpoint = null, BoundedChannelOp
         return _jsonWriter;
     }
 }
+#endif //!NET48

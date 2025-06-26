@@ -1,3 +1,4 @@
+#if !NET48
 using ModelContextProtocol.Protocol;
 using System.Threading.Channels;
 
@@ -97,3 +98,4 @@ public sealed class SseResponseStreamTransport(Stream sseResponseStream, string?
         await _incomingChannel.Writer.WriteAsync(message, cancellationToken).ConfigureAwait(false);
     }
 }
+#endif //!NET48

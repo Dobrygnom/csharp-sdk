@@ -126,7 +126,7 @@ internal sealed partial class AIFunctionMcpServerTool : McpServerTool
                         },
                     };
                 }
-
+#if !NET48
                 if (options?.Services is { } services &&
                     services.GetService<IServiceProviderIsService>() is { } ispis &&
                     ispis.IsService(pi.ParameterType))
@@ -152,6 +152,7 @@ internal sealed partial class AIFunctionMcpServerTool : McpServerTool
                              throw new ArgumentException("No service of the requested type was found.")),
                     };
                 }
+#endif //!NET48
 
                 return default;
 
@@ -458,7 +459,10 @@ internal sealed partial class AIFunctionMcpServerTool : McpServerTool
             IsError = allErrorContent && hasAny
         };
     }
-
+#if !NET48
     [LoggerMessage(Level = LogLevel.Error, Message = "\"{ToolName}\" threw an unhandled exception.")]
     private partial void ToolCallError(string toolName, Exception exception);
+#else //!NET48
+    private void ToolCallError(string toolName, Exception exception) { }
+#endif //!NET48
 }

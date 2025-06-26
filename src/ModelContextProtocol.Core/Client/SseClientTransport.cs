@@ -1,3 +1,4 @@
+#if !NET48
 using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Protocol;
 
@@ -93,3 +94,4 @@ public sealed class SseClientTransport : IClientTransport, IAsyncDisposable
         return default;
     }
 }
+#endif //!NET48

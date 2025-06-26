@@ -111,7 +111,7 @@ internal sealed class AIFunctionMcpServerPrompt : McpServerPrompt
                         },
                     };
                 }
-
+#if !NET48
                 if (options?.Services is { } services &&
                     services.GetService<IServiceProviderIsService>() is { } ispis &&
                     ispis.IsService(pi.ParameterType))
@@ -137,6 +137,7 @@ internal sealed class AIFunctionMcpServerPrompt : McpServerPrompt
                              throw new ArgumentException("No service of the requested type was found.")),
                     };
                 }
+#endif //!net48
 
                 return default;
 

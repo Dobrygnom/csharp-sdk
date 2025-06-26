@@ -83,8 +83,10 @@ internal sealed partial class McpSession : IDisposable
         {
             StdioClientSessionTransport or StdioServerTransport => "stdio",
             StreamClientSessionTransport or StreamServerTransport => "stream",
+#if !NET48
             SseClientSessionTransport or SseResponseStreamTransport => "sse",
             StreamableHttpClientSessionTransport or StreamableHttpServerTransport or StreamableHttpPostTransport => "http",
+#endif //!NET48
             _ => "unknownTransport"
         };
 
@@ -114,7 +116,7 @@ internal sealed partial class McpSession : IDisposable
                 LogMessageRead(EndpointName, message.GetType().Name);
 
                 // Fire and forget the message handling to avoid blocking the transport.
-                _ = ProcessMessageAsync();
+                await ProcessMessageAsync();
                 async Task ProcessMessageAsync()
                 {
                     JsonRpcMessageWithId? messageWithId = message as JsonRpcMessageWithId;
@@ -713,7 +715,7 @@ internal sealed partial class McpSession : IDisposable
 
         return null;
     }
-
+#if !NET48
     [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} message processing canceled.")]
     private partial void LogEndpointMessageProcessingCanceled(string endpointName);
 
@@ -773,4 +775,26 @@ internal sealed partial class McpSession : IDisposable
 
     [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} sending message. Message: '{Message}'.")]
     private partial void LogSendingMessageSensitive(string endpointName, string message);
+#else //!NET48
+    private void LogEndpointMessageProcessingCanceled(string endpointName) { }
+    private void LogRequestHandlerCalled(string endpointName, string method) { }
+    private void LogRequestHandlerCompleted(string endpointName, string method) { }
+    private void LogRequestHandlerException(string endpointName, string method, Exception exception) { }
+    private void LogNoRequestFoundForMessageWithId(string endpointName, RequestId requestId) { }
+    private void LogSendingRequestFailed(string endpointName, string method, string errorMessage, int errorCode) { }
+    private void LogSendingRequestInvalidResponseType(string endpointName, string method) { }
+    private void LogSendingRequest(string endpointName, string method) { }
+    private void LogSendingRequestSensitive(string endpointName, string method, string request) { }
+    private void LogRequestCanceled(string endpointName, RequestId requestId, string? reason) { }
+    private void LogRequestResponseReceived(string endpointName, string method) { }
+    private void LogRequestResponseReceivedSensitive(string endpointName, string method, string response) { }
+    private void LogMessageRead(string endpointName, string messageType) { }
+    private void LogMessageHandlerException(string endpointName, string messageType, Exception exception) { }
+    private void LogMessageHandlerExceptionSensitive(string endpointName, string messageType, string message, Exception exception) { }
+    private void LogEndpointHandlerUnexpectedMessageType(string endpointName, string messageType) { }
+    private void LogNoHandlerFoundForRequest(string endpointName, string method) { }
+    private void LogRequestSentAwaitingResponse(string endpointName, string method, RequestId requestId) { }
+    private void LogSendingMessage(string endpointName) { }
+    private void LogSendingMessageSensitive(string endpointName, string message) { }
+#endif //!NET48
 }

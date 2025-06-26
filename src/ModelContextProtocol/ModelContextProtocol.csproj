@@ -1,16 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net9.0;net8.0;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;netstandard2.0;net48</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IsPackable>true</IsPackable>
     <PackageId>ModelContextProtocol</PackageId>
     <Description>.NET SDK for the Model Context Protocol (MCP) with hosting and dependency injection extensions.</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <LangVersion>preview</LangVersion>
+    <NoWarn>$(NoWarn);CS1574;CS0419</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+  <PropertyGroup Condition="'$(TargetFramework)' != 'netstandard2.0' and '$(TargetFramework)' != 'net48'">
     <IsAotCompatible>true</IsAotCompatible>
   </PropertyGroup>
 
@@ -18,9 +19,15 @@
     <Compile Include="..\Common\Throw.cs" Link="Throw.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net48'">
     <Compile Include="..\Common\Polyfills\**\*.cs" />
   </ItemGroup>
+
+  <!-- Dependencies only needed by net48 -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <ProjectReference Include="..\ModelContextProtocol.Core\ModelContextProtocol.Core.csproj" />

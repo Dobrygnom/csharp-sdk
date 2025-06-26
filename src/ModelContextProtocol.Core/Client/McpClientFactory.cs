@@ -49,6 +49,10 @@ public static partial class McpClientFactory
         return client;
     }
 
+#if !NET48
     [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} client created and connected.")]
     private static partial void LogClientCreated(this ILogger logger, string endpointName);
+#else //!NET48
+    private static void LogClientCreated(this ILogger logger, string endpointName) { }
+#endif //!NET48
 }

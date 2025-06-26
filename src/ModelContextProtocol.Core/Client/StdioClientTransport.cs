@@ -235,7 +235,7 @@ public sealed partial class StdioClientTransport : IClientTransport
             return true;
         }
     }
-
+#if !NET48
     [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} connecting.")]
     private static partial void LogTransportConnecting(ILogger logger, string endpointName);
 
@@ -259,4 +259,14 @@ public sealed partial class StdioClientTransport : IClientTransport
 
     [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} shutdown failed.")]
     private static partial void LogTransportShutdownFailed(ILogger logger, string endpointName, Exception exception);
+#else //!NET48
+    private static void LogTransportConnecting(ILogger logger, string endpointName) { }
+    private static void LogCreateProcessForTransport(ILogger logger, string endpointName, string command) { }
+    private static void LogCreateProcessForTransportSensitive(ILogger logger, string endpointName, string command, string? arguments, string environment, string workingDirectory) { }
+    private static void LogTransportProcessStartFailed(ILogger logger, string endpointName) { }
+    private static void LogReadStderr(ILogger logger, string endpointName, string data) { }
+    private static void LogTransportProcessStarted(ILogger logger, string endpointName, int processId) { }
+    private static void LogTransportConnectFailed(ILogger logger, string endpointName, Exception exception) { }
+    private static void LogTransportShutdownFailed(ILogger logger, string endpointName, Exception exception) { }
+#endif //!NET48
 }

@@ -1,3 +1,4 @@
+#if !NET48
 using ModelContextProtocol.Protocol;
 using System.IO.Pipelines;
 using System.Threading.Channels;
@@ -129,3 +130,4 @@ public sealed class StreamableHttpServerTransport : ITransport
         }
     }
 }
+#endif //!NET48

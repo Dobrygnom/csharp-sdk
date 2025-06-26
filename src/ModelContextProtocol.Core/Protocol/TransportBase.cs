@@ -154,7 +154,7 @@ public abstract partial class TransportBase : ITransport
                 break;
         }
     }
-
+#if !NET48
     [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} transport connect failed.")]
     private protected partial void LogTransportConnectFailed(string endpointName, Exception exception);
 
@@ -211,4 +211,25 @@ public abstract partial class TransportBase : ITransport
 
     [LoggerMessage(Level = LogLevel.Warning, Message = "{EndpointName} failed to parse event. Message: '{Message}'.")]
     private protected partial void LogTransportEndpointEventParseFailedSensitive(string endpointName, string message, Exception exception);
+#else //!NET48
+    private protected void LogTransportConnectFailed(string endpointName, Exception exception) { }
+    private protected void LogTransportSendFailed(string endpointName, string messageId, Exception exception) { }
+    private protected void LogTransportEnteringReadMessagesLoop(string endpointName) { }
+    private protected void LogTransportEndOfStream(string endpointName) { }
+    private protected void LogTransportReceivedMessageSensitive(string endpointName, string message) { }
+    private protected void LogTransportReceivedMessage(string endpointName, string messageId) { }
+    private protected void LogTransportMessageParseUnexpectedTypeSensitive(string endpointName, string message) { }
+    private protected void LogTransportMessageParseFailed(string endpointName, Exception exception) { }
+    private protected void LogTransportMessageParseFailedSensitive(string endpointName, string message, Exception exception) { }
+    private protected void LogTransportReadMessagesCancelled(string endpointName) { }
+    private protected void LogTransportReadMessagesFailed(string endpointName, Exception exception) { }
+    private protected void LogTransportShuttingDown(string endpointName) { }
+    private protected void LogTransportShutdownFailed(string endpointName, Exception exception) { }
+    private protected void LogTransportCleanupReadTaskFailed(string endpointName, Exception exception) { }
+    private protected void LogTransportShutDown(string endpointName) { }
+    private protected void LogTransportMessageReceivedBeforeConnected(string endpointName) { }
+    private protected void LogTransportEndpointEventInvalid(string endpointName) { }
+    private protected void LogTransportEndpointEventParseFailed(string endpointName, Exception exception) { }
+    private protected void LogTransportEndpointEventParseFailedSensitive(string endpointName, string message, Exception exception) { }
+#endif //!NET48
 }

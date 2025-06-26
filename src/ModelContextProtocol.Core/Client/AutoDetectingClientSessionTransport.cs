@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using ModelContextProtocol.Protocol;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Channels;
 
 namespace ModelContextProtocol.Client;
@@ -58,6 +59,7 @@ internal sealed partial class AutoDetectingClientSessionTransport : ITransport
 
     private async Task InitializeAsync(JsonRpcMessage message, CancellationToken cancellationToken)
     {
+#if !NET48
         // Try StreamableHttp first
         var streamableHttpTransport = new StreamableHttpClientSessionTransport(_name, _options, _httpClient, _messageChannel, _loggerFactory);
 
@@ -87,8 +89,12 @@ internal sealed partial class AutoDetectingClientSessionTransport : ITransport
             await streamableHttpTransport.DisposeAsync().ConfigureAwait(false);
             throw;
         }
+#else //!NET48
+        throw new NotSupportedException();
+#endif //!NET48
     }
 
+#if !NET48
     private async Task InitializeSseTransportAsync(JsonRpcMessage message, CancellationToken cancellationToken)
     {
         var sseTransport = new SseClientSessionTransport(_name, _options, _httpClient, _messageChannel, _loggerFactory);
@@ -108,7 +114,7 @@ internal sealed partial class AutoDetectingClientSessionTransport : ITransport
             throw;
         }
     }
-
+#endif //!NET48
     public async ValueTask DisposeAsync()
     {
         try
@@ -125,7 +131,7 @@ internal sealed partial class AutoDetectingClientSessionTransport : ITransport
             _messageChannel.Writer.TryComplete();
         }
     }
-
+#if !NET48
     [LoggerMessage(Level = LogLevel.Debug, Message = "{EndpointName} attempting to connect using Streamable HTTP transport.")]
     private partial void LogAttemptingStreamableHttp(string endpointName);
 
@@ -140,4 +146,11 @@ internal sealed partial class AutoDetectingClientSessionTransport : ITransport
 
     [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} using SSE transport.")]
     private partial void LogUsingSSE(string endpointName);
+#else //!NET48
+    private void LogAttemptingStreamableHttp(string endpointName) { }
+    private void LogStreamableHttpFailed(string endpointName, HttpStatusCode statusCode) { }
+    private void LogUsingStreamableHttp(string endpointName) { }
+    private void LogAttemptingSSE(string endpointName) { }
+    private void LogUsingSSE(string endpointName) { }
+#endif //!NET48
 }

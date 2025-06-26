@@ -136,9 +136,9 @@ internal abstract partial class McpEndpoint : IAsyncDisposable
         return _session ?? throw new InvalidOperationException($"This should be unreachable from public API! Call {nameof(InitializeSession)} before sending messages.");
     }
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shutting down.")]
-    private partial void LogEndpointShuttingDown(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shutting down.")]
+    private void LogEndpointShuttingDown(string endpointName) {}
 
-    [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shut down.")]
-    private partial void LogEndpointShutDown(string endpointName);
+    // [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} shut down.")]
+    private void LogEndpointShutDown(string endpointName) {}
 }

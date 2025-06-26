@@ -1,3 +1,4 @@
+#if !NET48
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System.Net.Http.Headers;
@@ -266,3 +267,4 @@ internal sealed partial class StreamableHttpClientSessionTransport : TransportBa
         }
     }
 }
+#endif //!NET48

@@ -204,7 +204,7 @@ internal sealed partial class McpClient : McpEndpoint, IMcpClient
             }
         }
     }
-
+#if !NET48
     [LoggerMessage(Level = LogLevel.Information, Message = "{EndpointName} client received server '{ServerInfo}' capabilities: '{Capabilities}'.")]
     private partial void LogServerCapabilitiesReceived(string endpointName, string capabilities, string serverInfo);
 
@@ -216,4 +216,10 @@ internal sealed partial class McpClient : McpEndpoint, IMcpClient
 
     [LoggerMessage(Level = LogLevel.Error, Message = "{EndpointName} client protocol version mismatch with server. Expected '{Expected}', received '{Received}'.")]
     private partial void LogServerProtocolVersionMismatch(string endpointName, string expected, string received);
+#else //!NET48
+    private void LogServerCapabilitiesReceived(string endpointName, string capabilities, string serverInfo) { }
+    private void LogClientInitializationError(string endpointName, Exception exception) { }
+    private void LogClientInitializationTimeout(string endpointName) { }
+    private void LogServerProtocolVersionMismatch(string endpointName, string expected, string received) { }
+#endif //!NET48
 }

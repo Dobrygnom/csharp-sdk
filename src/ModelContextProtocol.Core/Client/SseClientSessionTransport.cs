@@ -1,3 +1,4 @@
+#if !NET48
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using ModelContextProtocol.Protocol;
@@ -256,3 +257,4 @@ internal sealed partial class SseClientSessionTransport : TransportBase
     [LoggerMessage(Level = LogLevel.Trace, Message = "{EndpointName} rejected SSE transport POST for message ID '{MessageId}'. Server response: '{responseContent}'.")]
     private partial void LogRejectedPostSensitive(string endpointName, string messageId, string responseContent);
 }
+#endif //!NET48
