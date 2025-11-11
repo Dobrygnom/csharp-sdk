@@ -117,6 +117,7 @@ internal sealed partial class McpSession : IDisposable
 
                 // Fire and forget the message handling to avoid blocking the transport.
                 await ProcessMessageAsync();
+                break;
                 async Task ProcessMessageAsync()
                 {
                     JsonRpcMessageWithId? messageWithId = message as JsonRpcMessageWithId;
